@@ -25,24 +25,17 @@
 
 ## 环境
 * Java 8
-* Gradle 4.2.1
-* JUnit 4
+Intellij-IDEA
 
 ## 开始
 在命令行中使用以下命令在用户本地任意目录下clone此题目库
 ```
 git clone repo_of_this_template
 ```
-
-初次下载完需要安装依赖：
-```
-gradle build
-```
 运行测试：
 ```
-gradle test
+./gradlew test
 ```
-执行`gradle idea`，然后`idea .`即可在Intellj IDEA中打开项目。
 
 ## 学习资源
 1. [Java 继承](http://www.runoob.com/java/java-inheritance.html)
