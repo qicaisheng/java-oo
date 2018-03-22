@@ -6,7 +6,7 @@ introduce方法返回一个字符串形如：
 再写一个Student类继承Person类，除了id，name，age属性，还有要有klass属性。也有一个introduce方法，
 introduce方法返回一个字符串形如：
 
->My name is Tom. I am 21 years old. I am a Student. I am at Klass 2.
+>My name is Tom. I am 21 years old. I am a Student. I am at Class 2.
 
 但是Student的klass属性不是一个数字，而是一个对象，写一个Klass类，有number属性还有一个leader属性。但是leader属性不在构造器里。
 
@@ -14,7 +14,7 @@ Student构造的时候把Klass的一个实例传给Student，参见测试用例�
 Klass有一个assignLeader方法，接收一个Student实例。意为将一名学生设置为该Klass的班长。
 如果Klass的Leader是Tom，那么Tom调用introduce的方法就要返回：
 
->My name is Tom. I am 21 years old. I am a Student. I am Leader of Klass 2.
+>My name is Tom. I am 21 years old. I am a Student. I am Leader of Class 2.
 
 如果没有就继续返回旧的字符串。
 
@@ -25,25 +25,25 @@ Klass还有一个appendMember方法，接受一个Student实例。意味将一�
 
 相应的调用Student的introduce方法也只会返回旧的字符串。
 
-再写一个Teacher类继承Person类，除了id，name，age属性，也有klasses属性。也有一个introduce方法，
+再写一个Teacher类继承Person类，除了id，name，age属性，也有classes属性。也有一个introduce方法，
 introduce方法返回一个字符串形如：
 
->My name is Tom. I am 21 years old. I am a Teacher. I teach Klass 2, 3.
+>My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.
 
-如果klasses的长度为0，就会返回：
+如果classes的长度为0，就会返回：
 
->My name is Tom. I am 21 years old. I am a Teacher. I teach No Klass.
+>My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.
 
-Teacher还有一个isTeaching方法，传入一个学生，返回true/false。只要学生在klasses中的任一个klass中，就是在教他。
+Teacher还有一个isTeaching方法，传入一个学生，返回true/false。只要学生在classes中的任一个klass中，就是在教他。
 而学生是否在klass中这件事情，应该是Klass有一个方法isIn来判断。
 
 当学生加入Teacher教的班级的时候，Teacher会打印一个句话，形如：
 
->I am Tom. I know Jerry has joined Klass 2.
+>I am Tom. I know Jerry has joined Class 2.
 
 当学生成为Teacher教的班级的班长的时候，Teacher会打印一句话，形如：
 
->I am Tom. I know Jerry become Leader of Klass 2.
+>I am Tom. I know Jerry become Leader of Class 2.
 
 所有Person的子类的这段文字：
 
