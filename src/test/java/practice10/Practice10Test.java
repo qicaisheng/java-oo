@@ -1,11 +1,11 @@
 package practice10;
 
-import com.google.common.collect.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.LinkedList;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -96,7 +96,9 @@ public class Practice10Test {
 
     @Test
     public void should_teacher_have_name_and_age_and_classes() throws Exception {
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(klass2));
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
+        linkedList.add(klass2);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         assertThat(tom.getName()).isEqualTo("Tom");
         assertThat(tom.getAge()).isEqualTo(21);
         assertThat(tom.getClasses().size()).isEqualTo(1);
@@ -105,8 +107,11 @@ public class Practice10Test {
 
     @Test
     public void should_teacher_introduce_itself_with_which_classes_it_teaches() throws Exception {
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
         Klass klass3 = new Klass(3);
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(klass2, klass3));
+        linkedList.add(klass2);
+        linkedList.add(klass3);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         assertThat(tom.introduce()).isEqualTo("My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2, 3.");
     }
 
@@ -118,8 +123,11 @@ public class Practice10Test {
 
     @Test
     public void should_teacher_isTeaching_return_true_when_the_student_is_in_any_classes_the_teacher_teaches() throws Exception {
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
         Klass klass3 = new Klass(3);
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(klass2, klass3));
+        linkedList.add(klass2);
+        linkedList.add(klass3);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         Student jerry = new Student(1, "Jerry", 8, klass2);
 
         assertThat(tom.isTeaching(jerry)).isTrue();
@@ -127,7 +135,9 @@ public class Practice10Test {
 
     @Test
     public void should_teacher_isTeaching_return_false_when_the_student_is_not_in_all_the_classes_the_teacher_teaches() throws Exception {
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(klass2));
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
+        linkedList.add(klass2);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         Student jerry = new Student(1, "Jerry", 8, new Klass(3));
 
         assertThat(tom.isTeaching(jerry)).isFalse();
@@ -135,14 +145,19 @@ public class Practice10Test {
 
     @Test
     public void should_teacher_introduce_a_student_it_teaches() throws Exception {
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(klass2));
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
+        linkedList.add(klass2);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         Student jerry = new Student(1, "Jerry", 8, klass2);
         assertThat(tom.introduceWith(jerry)).isEqualTo("My name is Tom. I am 21 years old. I am a Teacher. I teach Jerry.");
     }
 
     @Test
     public void should_teacher_introduce_a_student_it_does_not_teach() throws Exception {
-        Teacher tom = new Teacher(1, "Tom", 21, Sets.newHashSet(new Klass(1)));
+        LinkedList<practice10.Klass> linkedList = new LinkedList<Klass>();
+        Klass klass1 = new Klass(1);
+        linkedList.add(klass1);
+        Teacher tom = new Teacher(1, "Tom", 21, linkedList);
         Student jerry = new Student(1, "Jerry", 8, new Klass(2));
         assertThat(tom.introduceWith(jerry)).isEqualTo("My name is Tom. I am 21 years old. I am a Teacher. I don't teach Jerry.");
     }

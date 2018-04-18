@@ -1,20 +1,18 @@
 package practice10;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.stream.Collectors;
+import java.util.LinkedList;
 
 import static java.util.stream.Collectors.joining;
 
 public class Teacher extends Person {
-    private Collection<Klass> classes;
+    private LinkedList<Klass> classes = new LinkedList<Klass>();
 
     public Teacher(int id, String name, int age) {
         super(id, name, age);
-        this.classes = Collections.emptySet();
     }
 
-    public Teacher(int id, String name, int age, Collection<Klass> classes) {
+    public Teacher(int id, String name, int age, LinkedList<Klass> classes) {
         super(id, name, age);
         this.classes = classes;
     }
