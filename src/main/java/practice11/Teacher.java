@@ -19,7 +19,7 @@ public class Teacher extends Person implements KlassListener {
         super(id, name, age);
 
         this.klasses = klasses;
-        this.klasses.forEach(klass -> subscribe(klass));
+        this.klasses.forEach(this::subscribe);
     }
 
     private void subscribe(KlassSubject klassSubject) {

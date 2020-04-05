@@ -8,7 +8,7 @@ public class Klass implements KlassSubject {
     private int number;
     private Student leader;
     private List<Student> members = new ArrayList<>();
-    private List<KlassListener> observers = new ArrayList<>();
+    private List<KlassListener> listeners = new ArrayList<>();
 
     public Klass(int number) {
         this.number = number;
@@ -23,8 +23,8 @@ public class Klass implements KlassSubject {
     }
     
     @Override
-    public List<KlassListener> getObservers() {
-        return this.observers;
+    public List<KlassListener> getListeners() {
+        return this.listeners;
     }
     
     public void assignLeader(Student student) {
@@ -34,7 +34,7 @@ public class Klass implements KlassSubject {
         }
         leader = student;
         KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.BECAME_LEADER);
-        getObservers().forEach(observer -> observer.listen(klassNotification));
+        getListeners().forEach(listener -> listener.listen(klassNotification));
     }
 
     public Student getLeader() {
@@ -58,12 +58,12 @@ public class Klass implements KlassSubject {
     public void appendMember(Student student) {
         members.add(student);
         KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.JOINED);
-        getObservers().forEach(observer -> observer.listen(klassNotification));
+        getListeners().forEach(observer -> observer.listen(klassNotification));
     }
 
     @Override
     public void register(KlassListener klassListener) {
-        getObservers().add(klassListener);
+        getListeners().add(klassListener);
     }
 
     public class KlassNotification {
