@@ -52,7 +52,7 @@ public class Teacher extends Person {
 
     public void sendNotification(Klass.KlassNotification klassNotification) {
         String notificationType = klassNotification.getKlassNotificationType() == Klass.KlassNotificationType.JOINED ? "has joined" : "become Leader of";
-        String notification = "I am " + this.getName() + ". I know " + klassNotification.getStudent().getName() + " " + notificationType + " Class " + klassNotification.getKlass().getNumber() + ".";
+        String notification = String.format("I am %s. I know %s %s Class %d.", this.getName(), klassNotification.getStudent().getName(), notificationType, klassNotification.getKlass().getNumber());
         System.out.println(notification);
     }
 }
