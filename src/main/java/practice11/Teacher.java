@@ -19,8 +19,13 @@ public class Teacher extends Person {
         super(id, name, age);
 
         this.klasses = klasses;
+        this.klasses.forEach(klass -> subscribe(klass));
     }
-    
+
+    private void subscribe(Klass klass) {
+        klass.addObserver(this);
+    }
+
     @Override
     public String introduce() {
         List<String> teachClassesNumbers = getClasses().stream().map(Klass::getNumber).map(Object::toString).collect(Collectors.toList());
@@ -45,4 +50,9 @@ public class Teacher extends Person {
         return klasses;
     }
 
+    public void sendNotification(Klass.KlassNotification klassNotification) {
+        String notificationType = klassNotification.getKlassNotificationType() == Klass.KlassNotificationType.JOINED ? "has joined" : "become Leader of";
+        String notification = "I am " + this.getName() + ". I know " + klassNotification.getStudent().getName() + " " + notificationType + " Class " + klassNotification.getKlass().getNumber() + ".";
+        System.out.println(notification);
+    }
 }

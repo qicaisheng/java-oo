@@ -8,6 +8,7 @@ public class Klass {
     private int number;
     private Student leader;
     private List<Student> members = new ArrayList<>();
+    private List<Teacher> observers = new ArrayList<>();
 
     public Klass(int number) {
         this.number = number;
@@ -27,6 +28,8 @@ public class Klass {
             return;
         }
         leader = student;
+        KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.BECAME_LEADER);
+        this.observers.forEach(observer -> observer.sendNotification(klassNotification));
     }
 
     public Student getLeader() {
@@ -49,5 +52,39 @@ public class Klass {
 
     public void appendMember(Student student) {
         members.add(student);
+        KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.JOINED);
+        this.observers.forEach(observer -> observer.sendNotification(klassNotification));
+    }
+
+    public void addObserver(Teacher teacher) {
+        this.observers.add(teacher);
+    }
+
+    public class KlassNotification {
+        private final Student student;
+        private Klass klass;
+        private final KlassNotificationType klassNotificationType;
+
+        public KlassNotification(Student student, Klass klass, KlassNotificationType klassNotificationType) {
+            this.student = student;
+            this.klass = klass;
+            this.klassNotificationType = klassNotificationType;
+        }
+
+        public Student getStudent() {
+            return student;
+        }
+
+        public KlassNotificationType getKlassNotificationType() {
+            return klassNotificationType;
+        }
+
+        public Klass getKlass() {
+            return klass;
+        }
+    }
+
+    public enum  KlassNotificationType {
+        JOINED, BECAME_LEADER 
     }
 }

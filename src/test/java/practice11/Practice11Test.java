@@ -1,7 +1,6 @@
 package practice11;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -164,7 +163,6 @@ public class Practice11Test {
     }
 
     @Test
-    @Ignore
     public void should_teacher_be_notified_when_student_join_any_classes_it_teaches() throws Exception {
         LinkedList<practice11.Klass> linkedList = new LinkedList<Klass>();
         linkedList.add(klass2);
@@ -177,7 +175,6 @@ public class Practice11Test {
     }
 
     @Test
-    @Ignore
     public void should_teacher_be_notified_when_any_class_it_teaches_assigned_a_leader() throws Exception {
         LinkedList<practice11.Klass> linkedList = new LinkedList<Klass>();
         linkedList.add(klass2);
