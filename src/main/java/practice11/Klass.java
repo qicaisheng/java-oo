@@ -8,7 +8,7 @@ public class Klass {
     private int number;
     private Student leader;
     private List<Student> members = new ArrayList<>();
-    private List<Teacher> observers = new ArrayList<>();
+    private List<KlassListener> observers = new ArrayList<>();
 
     public Klass(int number) {
         this.number = number;
@@ -56,8 +56,8 @@ public class Klass {
         this.observers.forEach(observer -> observer.listen(klassNotification));
     }
 
-    public void register(Teacher teacher) {
-        this.observers.add(teacher);
+    public void register(KlassListener klassListener) {
+        this.observers.add(klassListener);
     }
 
     public class KlassNotification {
