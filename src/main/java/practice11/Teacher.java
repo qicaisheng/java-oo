@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements KlassListener {
     private LinkedList<Klass> klasses = new LinkedList<>();
 
     public Teacher(String name, int age) {
@@ -50,6 +50,7 @@ public class Teacher extends Person {
         return klasses;
     }
 
+    @Override
     public void listen(Klass.KlassNotification klassNotification) {
         String notificationType = klassNotification.getKlassNotificationType() == Klass.KlassNotificationType.JOINED ? "has joined" : "become Leader of";
         String notification = String.format("I am %s. I know %s %s Class %d.", this.getName(), klassNotification.getStudent().getName(), notificationType, klassNotification.getKlass().getNumber());
