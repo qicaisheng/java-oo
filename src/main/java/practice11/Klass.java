@@ -33,7 +33,7 @@ public class Klass implements KlassSubject {
             return;
         }
         leader = student;
-        update(new KlassNotification(student, this, KlassNotificationType.BECAME_LEADER));
+        send(new KlassNotification(student, this, KlassNotificationType.BECAME_LEADER));
     }
 
     public Student getLeader() {
@@ -56,11 +56,11 @@ public class Klass implements KlassSubject {
 
     public void appendMember(Student student) {
         members.add(student);
-        update(new KlassNotification(student, this, KlassNotificationType.JOINED));
+        send(new KlassNotification(student, this, KlassNotificationType.JOINED));
     }
 
     @Override
-    public void update(KlassNotification klassNotification) {
+    public void send(KlassNotification klassNotification) {
         getListeners().forEach(listener -> listener.listen(klassNotification));
     }
 
