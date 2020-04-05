@@ -29,7 +29,7 @@ public class Klass {
         }
         leader = student;
         KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.BECAME_LEADER);
-        this.observers.forEach(observer -> observer.sendNotification(klassNotification));
+        this.observers.forEach(observer -> observer.listen(klassNotification));
     }
 
     public Student getLeader() {
@@ -53,7 +53,7 @@ public class Klass {
     public void appendMember(Student student) {
         members.add(student);
         KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.JOINED);
-        this.observers.forEach(observer -> observer.sendNotification(klassNotification));
+        this.observers.forEach(observer -> observer.listen(klassNotification));
     }
 
     public void addObserver(Teacher teacher) {

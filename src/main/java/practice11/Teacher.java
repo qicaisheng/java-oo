@@ -50,7 +50,7 @@ public class Teacher extends Person {
         return klasses;
     }
 
-    public void sendNotification(Klass.KlassNotification klassNotification) {
+    public void listen(Klass.KlassNotification klassNotification) {
         String notificationType = klassNotification.getKlassNotificationType() == Klass.KlassNotificationType.JOINED ? "has joined" : "become Leader of";
         String notification = String.format("I am %s. I know %s %s Class %d.", this.getName(), klassNotification.getStudent().getName(), notificationType, klassNotification.getKlass().getNumber());
         System.out.println(notification);
