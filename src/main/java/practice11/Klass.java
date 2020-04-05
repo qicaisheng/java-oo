@@ -59,7 +59,8 @@ public class Klass implements KlassSubject {
         update(new KlassNotification(student, this, KlassNotificationType.JOINED));
     }
 
-    private void update(KlassNotification klassNotification) {
+    @Override
+    public void update(KlassNotification klassNotification) {
         getListeners().forEach(listener -> listener.listen(klassNotification));
     }
 
