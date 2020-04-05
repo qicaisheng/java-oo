@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Klass {
+public class Klass implements KlassSubject {
     private int number;
     private Student leader;
     private List<Student> members = new ArrayList<>();
@@ -56,6 +56,7 @@ public class Klass {
         this.observers.forEach(observer -> observer.listen(klassNotification));
     }
 
+    @Override
     public void register(KlassListener klassListener) {
         this.observers.add(klassListener);
     }
