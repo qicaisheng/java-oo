@@ -23,7 +23,7 @@ public class Teacher extends Person implements KlassListener {
     }
 
     private void subscribe(Klass klass) {
-        klass.addObserver(this);
+        klass.register(this);
     }
 
     @Override

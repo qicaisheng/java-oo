@@ -56,7 +56,7 @@ public class Klass {
         this.observers.forEach(observer -> observer.listen(klassNotification));
     }
 
-    public void addObserver(Teacher teacher) {
+    public void register(Teacher teacher) {
         this.observers.add(teacher);
     }
 
