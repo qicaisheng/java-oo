@@ -58,7 +58,7 @@ public class Klass implements KlassSubject {
     public void appendMember(Student student) {
         members.add(student);
         KlassNotification klassNotification = new KlassNotification(student, this, KlassNotificationType.JOINED);
-        getListeners().forEach(observer -> observer.listen(klassNotification));
+        getListeners().forEach(listener -> listener.listen(klassNotification));
     }
 
     @Override
