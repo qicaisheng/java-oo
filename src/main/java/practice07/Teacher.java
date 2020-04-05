@@ -19,13 +19,19 @@ public class Teacher extends Person {
 
     @Override
     public String introduce() {
-        String teachClassString = getKlass() == null ? "No Class." : "Class " + getKlass().getNumber() + ".";
+        String teachClassString = getKlass() != null ? "Class " + getKlass().getNumber() + "." : "No Class.";
         return super.introduce() + " I am a Teacher. I teach " + teachClassString;
     }
 
     public String introduceWith(Student jerry) {
-        boolean teachJerry = getKlass() != null && (jerry.getKlass().getNumber() == this.getKlass().getNumber());
-        String introduceWithJerry = teachJerry ? "I teach " + jerry.getName() : "I don't teach " + jerry.getName();
+        String introduceWithJerry = isTeach(jerry) ? "I teach " + jerry.getName() : "I don't teach " + jerry.getName();
         return super.introduce() + " I am a Teacher. " + introduceWithJerry + ".";
+    }
+
+    private boolean isTeach(Student jerry) {
+        if (getKlass() == null || jerry.getKlass() == null) {
+            return false;
+        }
+        return jerry.getKlass().getNumber() == this.getKlass().getNumber();
     }
 }
