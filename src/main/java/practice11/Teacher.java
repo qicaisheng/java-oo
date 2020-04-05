@@ -22,8 +22,8 @@ public class Teacher extends Person implements KlassListener {
         this.klasses.forEach(klass -> subscribe(klass));
     }
 
-    private void subscribe(Klass klass) {
-        klass.register(this);
+    private void subscribe(KlassSubject klassSubject) {
+        klassSubject.register(this);
     }
 
     @Override
