@@ -21,7 +21,12 @@ public class Klass implements KlassSubject {
     public String getDisplayName() {
         return "Class " + getNumber();
     }
-
+    
+    @Override
+    public List<KlassListener> getObservers() {
+        return this.observers;
+    }
+    
     public void assignLeader(Student student) {
         if (!members.contains(student)) {
             System.out.println("It is not one of us.");
