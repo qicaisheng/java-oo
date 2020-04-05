@@ -29,4 +29,8 @@ public class Student extends Person {
         }
         return this.equals(klass.getLeader());
     }
+
+    public boolean isIn(Klass klass) {
+        return getKlass().equals(klass);
+    }
 }

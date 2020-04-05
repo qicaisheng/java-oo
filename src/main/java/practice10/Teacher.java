@@ -38,7 +38,7 @@ public class Teacher extends Person {
         if (getClasses() == null || student.getKlass() == null) {
             return false;
         }
-        return this.getClasses().stream().anyMatch(teachKlass -> teachKlass.equals(student.getKlass()));
+        return this.getClasses().stream().anyMatch(student::isIn);
     }
 
     public List<Klass> getClasses() {
