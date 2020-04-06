@@ -30,8 +30,8 @@ public class Teacher extends Person implements KlassListener {
     public String introduce() {
         List<String> teachClassesNumbers = getClasses().stream().map(Klass::getNumber).map(Object::toString).collect(Collectors.toList());
         String teachClassesString = String.join(", ", teachClassesNumbers);
-        String teachClassString = getClasses().size() != 0 ? "Class " + teachClassesString + "." : "No Class.";
-        return super.introduce() + " I am a Teacher. I teach " + teachClassString;
+        String teachClassString = getClasses().size() != 0 ? String.format("Class %s.", teachClassesString) : "No Class.";
+        return String.format("%s I am a Teacher. I teach %s", super.introduce(), teachClassString);
     }
 
     public String introduceWith(Student student) {
